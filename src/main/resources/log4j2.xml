@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    
+    <RollingFile name="RollingFile">
+      <FileName>Datos/AppLogs/WsApiRest.log</FileName>
+      <FilePattern>Datos/AppLogs/WsApiRest_old_time-based-logs/%d{yyyy-MM-dd-hh-mm}.log.zip</FilePattern>
+      <PatternLayout>
+        <Pattern>%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="2 mb"/>
+      </Policies>
+      <DefaultRolloverStrategy max="5" />
+    </RollingFile>
+  </appenders>
+
+  <loggers>     
+    <root level="debug">
+      <appender-ref ref="Console" level="info"/>
+      <appender-ref ref="RollingFile" level="info"/>
+    </root>    
+  </loggers>
+</configuration>
